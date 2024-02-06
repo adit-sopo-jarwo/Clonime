@@ -12,10 +12,10 @@ import Image from "next/image"
 const Page = async ({ params: { id } }) => {
     const anime = await getAnimeResponse(`anime/${id}`)
     const user = await authSession()
-    const collection = await prisma.collection.findFirst({
+    const collection = await prisma.collection.findMany({
         where: { user_email: user?.email, anime_mal_id: id }
     })
-    const rating = await prisma.rating.findFirst({
+    const rating = await prisma.rating.findMany({
         where: { user_email: user?.email, anime_mal_id: id }
     })
 
@@ -25,8 +25,8 @@ const Page = async ({ params: { id } }) => {
                 <h3 className="text-2xl">{anime.data.title}</h3>
                 <h3 className="text-xl">{anime.data.title_english}</h3>
                 {!rating && user ? (<StarRating anime_mal_id={id} user_email={user?.email} anime_title={anime.data.title} />)
-                :
-                (<StarAvege anime_mal_id={id} /> )}
+                    :
+                    (<StarAvege anime_mal_id={id} />)}
                 {!collection && user && <CollectionButton anime_mal_id={id} user_email={user?.email} anime_image={anime.data.images.webp.image_url} anime_title={anime.data.title} />}
             </div>
 
