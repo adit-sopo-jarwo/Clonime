@@ -1,5 +1,3 @@
-"use client";
-
 import prisma from "@/libs/prisma";
 import { average } from "average-rating";
 import StarRatings from 'react-star-ratings';
