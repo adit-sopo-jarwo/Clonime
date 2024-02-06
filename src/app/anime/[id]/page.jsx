@@ -15,7 +15,7 @@ const Page = async ({ params: { id } }) => {
     const collection = await prisma.collection.findMany({
         where: { user_email: user?.email, anime_mal_id: id }
     })
-    const rating = await prisma.rating.findMany({
+    const rating = await prisma.rating.findFirst({
         where: { user_email: user?.email, anime_mal_id: id }
     })
 
