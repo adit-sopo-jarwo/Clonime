@@ -9,7 +9,6 @@ const Page = async () => {
     const collections = await prisma.collection.findMany({
         where: { user_email: user.email }
     })
-    console.log({ collection })
     return (
         <section className="mt-4 px-4 w-full">
             <Header title="My Collections" />
