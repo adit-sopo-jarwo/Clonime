@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall":"npx prisma generate",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall":"prisma generate"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.15",
